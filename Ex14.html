@@ -1,0 +1,72 @@
+<html> 
+<head> 
+<title>Личные данные</title> 
+
+<script> 
+function doSend(){  
+
+if(document.user.n.value==""){ 
+alert('Вы должны заполнить поле "Ваше имя"') 
+document.user.n.focus() //курсор на поле n
+} 
+
+if(document.user.p.value==""){ 
+alert('Вы должны заполнить поле "Пароль"') 
+document.user.p.focus() 
+} 
+
+var num = document.user.p.value.length;//определяем длину поля p
+if(num<=4){ 
+alert('Поле "Пароль" должно содержать больше 4 символов') 
+document.user.p.select()//выделяет содержимое поля p
+document.user.p.focus() 
+} 
+
+if(document.user.p.value !== document.user.pc.value){ 
+alert('Пароли не совпадают') 
+document.user.p.focus() 
+} 
+
+if(document.user.e.value==""){ 
+alert('Вы должны заполнить поле e-mail') 
+document.user.e.focus() 
+} 
+
+var i = document.user.e.value.indexOf("@")//возвращает 1 индекс найденного элемента
+if(i==-1){ 
+alert('Адрес e-mail указан неверно') 
+document.user.e.select() 
+document.user.e.focus() 
+} 
+
+var message = document.user.m.value.length;
+if(message<=10){ 
+alert('Длина сообщения должна быть более 10 символов') 
+document.user.m.focus() 
+} 
+
+else 
+document.user.submit() //инициирует отправку формы на сервер
+} 
+</script> 
+</head> 
+
+<body>  
+
+<form name="user"> 
+<br> 
+Ваше имя: *<input type="text" name="n" size="10" required><br> 
+Пароль: *<input type="password" name="p" size="10"><br> 
+Подтверждение пароля: *<input type="password" name="pc" size="10"><br> 
+Электронный адрес: *<input type="text" name="e" size="10"><br> 
+Тема сообщения: <input type="text" name="t" size="10"><br>
+Сообщение: <textarea name="m"></textarea><br> <!--textarea-многострочное текстовое поле-->
+
+<input type="button" value="Отправить" onClick="doSend()"> <!--button-кнопка-->
+<input type="reset" value="Очистить"> <!--reset-сброс формы-->
+<br>* - необходимые для заполнения поля
+</form> 
+
+</p> 
+</body> 
+</html>
